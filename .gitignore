@@ -1,9 +1,9 @@
+# binaries
+*
+!*.*
+
 # editor backups
 *~
 
 # object files
 *.o
-
-# binaries
-*
-!*.*
