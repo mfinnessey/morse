@@ -26,7 +26,7 @@ morseToText.set('.-', 'A');
 morseToText.set('-.', 'N');
 morseToText.set('--', 'M');
 morseToText.set('...', 'S');
-morseToText.set('..-', 'U');;
+morseToText.set('..-', 'U');
 morseToText.set('.-.', 'R');
 morseToText.set('.--', 'W');
 morseToText.set('-..', 'D');
