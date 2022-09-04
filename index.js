@@ -11,7 +11,6 @@ let morseMsg = '';
 let textMsg = '';
 let textCharacter;
 
-
 let dit;
 let dah;
 let characterGap;
