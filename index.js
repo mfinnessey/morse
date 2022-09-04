@@ -1,6 +1,8 @@
-let morseCharacterDisplay = document.getElementById('morse-character-display');
-let morseMsgDisplay = document.getElementById('morse-msg-display');
-let textMsgDisplay = document.getElementById('text-msg-display');
+const morseCharacterDisplay = document.getElementById('morse-character-display');
+const morseMsgDisplay = document.getElementById('morse-msg-display');
+const textMsgDisplay = document.getElementById('text-msg-display');
+const setUnitButton = document.getElementById('set-unit-button');
+const unit = document.getElementById('unit');
 let began = false; // has any text been entered
 
 let start; // general start time of a timer
@@ -9,10 +11,13 @@ let morseMsg = '';
 let textMsg = '';
 let textCharacter;
 
-const dit = 100; // feels approximately right. can be user-defineable
-const dah = 3 * dit; // by definition in International Morse Code
-const characterGap = dah;
-const wordGap = 7 * dit;
+
+let dit;
+let dah;
+let characterGap;
+let wordGap;
+
+setUnit(100); // a good starting value
 
 const morseToText = new Map();
 morseToText.set('.', 'E');
@@ -132,4 +137,16 @@ addEventListener('keyup', (event) => {
     morseCharacterDisplay.textContent = morseCharacterString;
 
     start = Date.now(); // for timing morse string ending
+});
+
+// set time unit to user-defined value
+function setUnit(unit){
+    dit = unit;
+    dah = 3 * dit;
+    characterGap = 3 * dit;
+    wordGap = 7 * dit;
+}
+
+setUnitButton.addEventListener('click', (event) => {
+    setUnit(unit.value);
 });
