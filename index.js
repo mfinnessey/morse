@@ -1,4 +1,4 @@
-const morseCharacterDisplay = document.getElementById('morse-character-display');
+const morseCharDisplay = document.getElementById('morse-char-display');
 const morseMsgDisplay = document.getElementById('morse-msg-display');
 const textMsgDisplay = document.getElementById('text-msg-display');
 const setUnitButton = document.getElementById('set-unit-button');
@@ -6,14 +6,14 @@ const unit = document.getElementById('unit');
 let began = false; // has any text been entered
 
 let start; // general start time of a timer
-let morseCharacterString = ''; // the current character being built
+let morseCharString = ''; // the current char being built
 let morseMsg = '';
 let textMsg = '';
-let textCharacter;
+let textChar;
 
 let dit;
 let dah;
-let characterGap;
+let charGap;
 let wordGap;
 
 setUnit(100); // a good starting value
@@ -93,31 +93,31 @@ function translate(morse){
 
 addEventListener('keydown', (event) => {
     if(event.repeat) return; // ignore automatic repeats
-    if(event.key != ' ') return; // ignore non-space characters
+    if(event.key != ' ') return; // ignore non-space chars
 
-    // gap between characters and/or words
-    if(began && Date.now() - start >= characterGap){
-	textCharacter = translate(morseCharacterString);
+    // gap between chars and/or words
+    if(began && Date.now() - start >= charGap){
+	textChar = translate(morseCharString);
 
 	// ignore invalid morse
-	if(textCharacter !== undefined){
+	if(textChar !== undefined){
 
 	    // word gap
 	    if(Date.now() - start >= wordGap){
-		morseMsg += ' ' + morseCharacterString + ' /';
-		textMsg += ' ' + textCharacter + ' /';
+		morseMsg += ' ' + morseCharString + ' /';
+		textMsg += ' ' + textChar + ' /';
 	    }
-	    // character gap
+	    // char gap
 	    else{
-		morseMsg += ' ' + morseCharacterString;
-		textMsg += ' ' + textCharacter;
+		morseMsg += ' ' + morseCharString;
+		textMsg += ' ' + textChar;
 	    }
 	}
 
-	morseCharacterString = '';
+	morseCharString = '';
 
 	// update displays
-	morseCharacterDisplay.textContent = morseCharacterString;
+	morseCharDisplay.textContent = morseCharString;
 	morseMsgDisplay.textContent = morseMsg;
 	textMsgDisplay.textContent = textMsg;
     }
@@ -126,14 +126,14 @@ addEventListener('keydown', (event) => {
 });
 
 addEventListener('keyup', (event) => {
-    if(event.key != ' ') return; // ignore non-space characters
+    if(event.key != ' ') return; // ignore non-space chars
 
     began = true; // at least one dit/dah has been entered
 
-    if(Date.now() - start <= dah) morseCharacterString += '.';
-    else morseCharacterString += '-';
+    if(Date.now() - start <= dah) morseCharString += '.';
+    else morseCharString += '-';
 
-    morseCharacterDisplay.textContent = morseCharacterString;
+    morseCharDisplay.textContent = morseCharString;
 
     start = Date.now(); // for timing morse string ending
 });
@@ -142,7 +142,7 @@ addEventListener('keyup', (event) => {
 function setUnit(unit){
     dit = unit;
     dah = 3 * dit;
-    characterGap = 3 * dit;
+    charGap = 3 * dit;
     wordGap = 7 * dit;
 }
 
