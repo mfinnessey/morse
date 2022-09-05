@@ -3,6 +3,9 @@ const morseMsgDisplay = document.getElementById('morse-msg-display');
 const textMsgDisplay = document.getElementById('text-msg-display');
 const setUnitButton = document.getElementById('set-unit-button');
 const unit = document.getElementById('unit');
+const curMorseChar = document.getElementById('cur-morse-char');
+const nextMorseCharDit = document.getElementById('next-morse-char-dit');
+const nextMorseCharDah = document.getElementById('next-morse-char-dah')
 let began = false; // has any text been entered
 
 let start; // general start time of a timer
@@ -134,6 +137,7 @@ addEventListener('keyup', (event) => {
     else morseCharString += '-';
 
     morseCharDisplay.textContent = morseCharString;
+    promptMorseChars(morseCharString);
 
     start = Date.now(); // for timing morse string ending
 });
@@ -149,3 +153,15 @@ function setUnit(unit){
 setUnitButton.addEventListener('click', (event) => {
     setUnit(unit.value);
 });
+
+function promptMorseChars(){
+    if(translate(morseCharString) !== undefined){
+	curMorseChar.textContent = translate(morseCharString);
+    }
+    if(translate(morseCharString + '.') !== undefined){
+	nextMorseCharDit.textContent =  translate(morseCharString + '.')
+    }
+    if(translate(morseCharString + '-') !== undefined){
+	nextMorseCharDah.textContent = translate(morseCharString + '-');
+    }
+}
