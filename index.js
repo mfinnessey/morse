@@ -151,6 +151,9 @@ function setUnit(unit){
 }
 
 setUnitButton.addEventListener('click', (event) => {
+    // ignore invalid unit value
+    if(unit.value == NaN || univ.value <= 0) return;
+
     setUnit(unit.value);
 });
 
