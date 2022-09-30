@@ -2,10 +2,11 @@
 An interactive, customizable Morse code translator designed to facilitate learning Morse code.
 
 # Usage
-
 Clone the repository using `git clone https://github.com/mfinnessey/morse`.
 
 Then host the website on an http server of your choice (I use Python's `http.server`) and navigate to it with a browser supporting reasonably modern JavaScript.
+
+Alternatively, a demo can be accessed at [https://mfinnessey.github.io/morse](https://mfinnessey.github.io/morse).
 
 # Features
 ## Interactive Translation
