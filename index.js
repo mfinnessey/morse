@@ -162,9 +162,9 @@ function promptMorseChars(){
 	curMorseChar.textContent = translate(morseCharString);
     }
     if(translate(morseCharString + '.') !== undefined){
-	nextMorseCharDit.textContent =  translate(morseCharString + '.')
+	nextMorseCharDit.textContent =  ". /   " + translate(morseCharString + '.')
     }
     if(translate(morseCharString + '-') !== undefined){
-	nextMorseCharDah.textContent = translate(morseCharString + '-');
+	nextMorseCharDah.textContent = "- /   " + translate(morseCharString + '-');
     }
 }
